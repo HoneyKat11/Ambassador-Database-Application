@@ -13,6 +13,7 @@ The purpose of this repository is to store code for an engineering ambassador da
    - First Name
    - Last Name
    - Major
+   - Graduation Year
    - Ambassador
 - Participated 
    - **UIN** (foreign)
