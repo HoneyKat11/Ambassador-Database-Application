@@ -8,28 +8,48 @@ The purpose of this repository is to store code for an engineering ambassador da
 ![image](database_entity_relation_diagram.png)
 
 # Tables
-- Ambassador
-- Participated
-- Position
-- Event
+- Ambassador 
+   - **UIN** (primary)
+   - First Name
+   - Last Name
+   - Major
+   - Ambassador
+- Participated 
+   - **UIN** (foreign)
+   - **Position ID** (primary)
+   - Hour Modifier
+- Position 
+   - **Event ID** (foreign)
+   - **Position ID** (primary)
+   - Position Name
+   - Scheduled Hours
+- Event 
+   - **Event ID** (primary)
+   - Event Name
+   - Date
+   - Academic Year
+
+## Pending Changes
+- Ambassador table needs "graduation year" integer attribute
+   - Diagrams need to be updated with this information 
 
 ## Inserts
 - Insert new ambassador
 - Insert new event
-- Insert new positions given an event
+- Insert new position given an event
 
 ## Updates
-- Update total hours given an event
-- Update hours for a position given an event
-- Update participated table with ambassadors given an event
+- Update total hours for a position given an event
+- Update hour modifier given an ambassador and position
 
 ## Deletes
-- Delete ambassador given their name
-- Delete event given the event name and time
+- Delete an ambassador
+- Delete an event
 
 ## Queries
 - All ambassadors graduating a given year
-- All ambassadors helping at a specific event (optionally with a specific position) 
+- All ambassadors helping at a specific event 
+- All ambassadors helping in a certain positon (during a specific event) 
 
 
 
