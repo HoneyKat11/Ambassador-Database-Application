@@ -16,11 +16,11 @@ The purpose of this repository is to store code for an engineering ambassador da
    - Graduation Year
    - Ambassador
 - Participated 
-   - **UIN** (foreign)
-   - **Position ID** (primary)
+   - **UIN** (primary, foreign)
+   - **Position ID** (primary, foreign)
    - Hour Modifier
 - Position 
-   - **Event ID** (foreign)
+   - **Event ID** (primary, foreign)
    - **Position ID** (primary)
    - Position Name
    - Scheduled Hours
@@ -31,26 +31,42 @@ The purpose of this repository is to store code for an engineering ambassador da
    - Academic Year
 
 ## Pending Changes
-- Ambassador table needs "graduation year" integer attribute
-   - Diagrams need to be updated with this information 
+- [x] Ambassador table needs "graduation year" integer attribute
 
 ## Inserts
 - Insert new ambassador
 - Insert new event
 - Insert new position given an event
+- Insert new record for ambassador participating in an event
 
 ## Updates
 - Update total hours for a position given an event
 - Update hour modifier given an ambassador and position
+- For a given ambassador:
+    - Update name
+    - Update major
+    - Update ambassador status
+    - Update graduation year
+- For a given position:
+    - Update scheduled hours
+- For a given participated record:
+    - Update hour modifier
 
 ## Deletes
 - Delete an ambassador
-- Delete an event
+- Delete an event and associated positions
 
 ## Queries
-- All ambassadors graduating a given year
-- All ambassadors helping at a specific event 
-- All ambassadors helping in a certain positon (during a specific event) 
+- For all ambassadors:
+    - All ambassadors graduating a given year
+    - All ambassadors of a given major
+- Given a specific ambassador:
+    - An ambassador's information (UIN, major, graduation year, ambassador status)
+    - An ambassador's hour count for a given year
+    - An ambassador's cumulative record of positions/events
+- Given a specific event:
+    - List of ambassadors and their respective positions at the event
+    - List of ambassadors in a given position at the event
 
 
 
