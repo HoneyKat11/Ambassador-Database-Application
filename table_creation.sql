@@ -3,7 +3,8 @@ CREATE TABLE Ambassador (
    	first_name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
 	major CHAR(50),
-	is_ambassador INTEGER
+	is_ambassador INTEGER,
+	grad_year INTEGER
 );
 
 CREATE TABLE Participated (
