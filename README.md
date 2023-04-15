@@ -55,6 +55,7 @@ The purpose of this repository is to store code for an engineering ambassador da
 ## Deletes
 - Delete an ambassador
 - Delete an event and associated positions
+- Delete all ambassadors who graduated before a given year
 
 ## Queries
 - For all ambassadors:
