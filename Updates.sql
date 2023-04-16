@@ -1,45 +1,65 @@
 -- Update total hours for a position given an event
-
+-- Unclear prompt
 
 
 -- Update hour modifier given an ambassador and position
+UPDATE Participated
+   SET hour_modifier = {hourModifier}
+ WHERE position_ID = {positionID}
+   AND UIN = {UIN};
+   
+UPDATE Participated
+   SET hour_modifier = {hourModifier}
+ WHERE position_ID = {positionID}
+   AND EXISTS (SELECT 1
+			     FROM Ambassador
+				WHERE Ambassador.UIN = Participated.UIN
+				  AND first_name = {firstName}
+				  AND last_name = {lastName});
 
 
 -- Update name for a given ambassador
 UPDATE Ambassador
-	set first_name = {givenfirstName},last_name ={givenLastName},
-	WHERE UIN = {UIN};
+   SET first_name = {firstName},last_name ={lastName},
+ WHERE UIN = {UIN};
 
 
 -- Update major for a given ambassador
 UPDATE Ambassador
-	set major = {givenMajor}
-	WHERE first_name = {firstName}
-	AND last_name = {lastName}
-	AND UIN = {UIN});
+   SET major = {givenMajor}
+ WHERE first_name = {firstName}
+   AND last_name = {lastName};
+   
+UPDATE Ambassador
+   SET major = {givenMajor}
+ WHERE UIN = {UIN};
 
 
 -- Update ambassador status for a given ambassador
 UPDATE Ambassador
-	set ambassadorStatus = {givenStaus}
-	WHERE first_name = {firstName}
-	AND last_name = {lastName}
-	AND UIN = {UIN});
+   SET ambassadorStatus = {givenStatus}
+ WHERE first_name = {firstName}
+   AND last_name = {lastName}
+   AND UIN = {UIN};
 
 
 -- Update graduation year for a given ambassador
 UPDATE Ambassador
-	set grad_year = {givenYear}
-	WHERE first_name = {firstName}
-	AND last_name = {lastName}
-	AND UIN = {UIN});
+   SET grad_year = {givenYear}
+ WHERE first_name = {firstName}
+   AND last_name = {lastName};
 
+UPDATE Ambassador
+   SET grad_year = {givenYear}
+ WHERE UIN = {UIN};
 
 
 -- Update scheduled hours for a given position
-
+UPDATE Position
+   SET base_hours = {positionHours}
+ WHERE position_ID = {positionID}
+   AND event_ID = {eventID};
 
 
 -- Update hour modifier for a given participated record
-
-
+-- Duplicate prompt
