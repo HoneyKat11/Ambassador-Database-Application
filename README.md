@@ -40,7 +40,6 @@ The purpose of this repository is to store code for an engineering ambassador da
 - Insert new record for ambassador participating in an event
 
 ## Updates
-- Update total hours for a position given an event
 - Update hour modifier given an ambassador and position
 - For a given ambassador:
     - Update name
