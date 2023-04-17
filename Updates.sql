@@ -1,7 +1,3 @@
--- Update total hours for a position given an event
--- Unclear prompt
-
-
 -- Update hour modifier given an ambassador and position
 UPDATE Participated
    SET hour_modifier = {hourModifier}
