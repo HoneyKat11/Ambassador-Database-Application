@@ -33,7 +33,7 @@ UPDATE Ambassador
 
 -- Update ambassador status for a given ambassador
 UPDATE Ambassador
-   SET ambassadorStatus = {givenStatus}
+   SET is_ambassador = {givenStatus}
  WHERE first_name = {firstName}
    AND last_name = {lastName}
    AND UIN = {UIN};
