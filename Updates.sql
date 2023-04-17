@@ -56,6 +56,3 @@ UPDATE Position
  WHERE position_ID = {positionID}
    AND event_ID = {eventID};
 
-
--- Update hour modifier for a given participated record
--- Duplicate prompt
