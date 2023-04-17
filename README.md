@@ -48,13 +48,13 @@ The purpose of this repository is to store code for an engineering ambassador da
     - Update graduation year
 - For a given position:
     - Update scheduled hours
-- For a given participated record:
-    - Update hour modifier
 
 ## Deletes
 - Delete an ambassador
 - Delete an event and associated positions
 - Delete all ambassadors who graduated before a given year
+- Delete all events with no participation records
+- Delete all events with no participation records befroe a given year
 
 ## Queries
 - For all ambassadors:
