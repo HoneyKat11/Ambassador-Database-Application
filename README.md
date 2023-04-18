@@ -32,6 +32,9 @@ The purpose of this repository is to store code for an engineering ambassador da
 
 ## Pending Changes
 - [x] Ambassador table needs "graduation year" integer attribute
+- Creating Views
+   - View for Ambassadors (name, major, total hours, ambassador status) 
+   - View for Events (event, hours, positions in a list in one column)
 
 ## Inserts
 - Insert new ambassador
