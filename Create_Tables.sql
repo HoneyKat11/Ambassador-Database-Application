@@ -14,7 +14,7 @@ CREATE TABLE Participated (
 	PRIMARY KEY (UIN, position_ID),
 	FOREIGN KEY (UIN)
 		REFERENCES Ambassador (UIN)
-			ON UPDATE CASCADE
+			ON UPDATE CASCADE,
 	FOREIGN KEY (position_ID)
 		REFERENCES Position (position_ID)
 			ON UPDATE CASCADE
