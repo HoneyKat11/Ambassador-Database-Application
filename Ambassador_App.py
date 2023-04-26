@@ -10,7 +10,9 @@ from PyQt6.QtWidgets import *
 
 from PyQt6.QtWidgets import (
     QAbstractItemView,
+    QApplication,
     QHBoxLayout,
+    QInputDialog,
     QMainWindow,
     QPushButton,
     QTableView,
@@ -59,6 +61,7 @@ class Window(QMainWindow):
         self.addButton.pressed.signatures.connect(self.add)
         self.editButton = QPushButton("Edit Ambassador")
         self.deleteButton = QPushButton("Delete Ambassador")
+        self.deleteButton.pressed.signatures.connect(self.delete)
         self.clearAllButton = QPushButton("Clear All")
 
         # Layout the GUI
@@ -71,7 +74,57 @@ class Window(QMainWindow):
         self.layout.addWidget(self.table)
         self.layout.addLayout(layout)
 
-    def add(self):
+    #def add(self):
+
+
+
+
+    def delete(self):
+        row = self.table.currentIndex().row()
+        column=self.table.currentIndex().column()
+        index = self.tableView.model.index(row,column)
+        FindDialog = QInputDialog()
+        FindDialog.setLabelText("Enter ambassador UIN or Name")
+        FindDialog.setInputMode.InputMode(QInputDialog.InputMode.TextInput)
+        FindDialog.exec()
+        UIN = index.data()
+        deleteDataAmbassadorByUINQuery = QSqlQuery(self.db)
+        deleteDataAmbassadorByNameQuery = QSqlQuery(self.db)
+
+        deleteDataAmbassadorByUINQuery.prepare(
+            """
+            DELETE FROM Ambassador
+              WHERE UIN = ?
+              ) 
+            """
+        )
+
+        deleteDataAmbassadorByNameQuery.prepare(
+            """
+              DELETE FROM Ambassador
+                WHERE first_name = ?,
+                 AND last_name = ?
+            """)
+
+        #Psedocode for deleting which one
+        if row < 0:
+            return
+
+        if FindDialog.textValue() == UIN:
+            deleteDataAmbassadorByUINQuery.bindValue(self,UIN)
+            self.table.delete(deleteDataAmbassadorByUINQuery)
+
+        #if FindDialog.textValue() == column:
+        #    deleteDataAmbassadorByNameQuery.bindValue(self,first_name)
+        #    deleteDataAmbassadorByNameQuery.bindValue(self,last_name)
+
+
+
+
+
+
+
+
 
 
     def get_db(self):
