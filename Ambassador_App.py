@@ -1,6 +1,6 @@
 # Ambassador_App.py
 
-"""This module provides views for the ambassador.db database."""
+"""This module provides an application for the ambassador.db database."""
 
 import sys
 
@@ -20,11 +20,11 @@ from PyQt6.QtWidgets import (
 )
 
 
-class EditWindow(QDialog):
+class EditWindow(QMainWindow):
     """Edit Window"""
     def __init__(self):
         """Initialize"""
-        super(EditWindow, self).__init__(parent=None)
+        super().__init__()
 
         # Class models
         self.db = None
@@ -32,63 +32,67 @@ class EditWindow(QDialog):
 
         self.get_db()
 
+        # Create save button
+        self.form = FormWindow()
+        self.saveButton = QPushButton("Save")
+        self.saveButton.pressed.connect(self.save_edit)
+
+        # Create cancel button
+        self.cancelButton = QPushButton("Cancel")
+        self.cancelButton.pressed.connect(self.cancel_edit)
+
         # Begin view
         self.setWindowTitle("Edit Ambassador")
-        self.setGeometry(100, 100, 300, 400)
+        self.resize(1200, 600)
 
-        # Form creation
-        self.formGroupBox = QGroupBox("Edit Ambassador")
-        self.gradYearEntry = QSpinBox(self)
-        self.gradYearEntry.setRange(2000, 2030)
-        self.create_form()
+        # Set up the model
+        self.model = QSqlTableModel(self, self.db)
+        self.model.setTable("Ambassador")
+        self.model.setEditStrategy(QSqlTableModel.EditStrategy.OnManualSubmit)
+        self.model.setHeaderData(0, Qt.Orientation.Horizontal, "UIN")
+        self.model.setHeaderData(1, Qt.Orientation.Horizontal, "First Name")
+        self.model.setHeaderData(2, Qt.Orientation.Horizontal, "Last Name")
+        self.model.setHeaderData(3, Qt.Orientation.Horizontal, "Major")
+        self.model.setHeaderData(4, Qt.Orientation.Horizontal, "Ambassador Status (T/F)")
+        self.model.setHeaderData(5, Qt.Orientation.Horizontal, "Graduation Year")
 
-        # Create button for submission
-        self.acceptButton = QPushButton("Submit")
-        self.acceptButton.pressed.connect(self.edit_ambassador)
-        self.cancelButton = QPushButton("Cancel")
-        self.cancelButton.pressed.connect(self.hide)
-        self.buttonBox = QDialogButtonBox(self.acceptButton or self.cancelButton)
+        if not self.model.select():
+            QMessageBox.warning(
+                None,
+                "Ambassador_Edit",
+                f"Select Failed: {self.db.lastError().text()}",
+            )
 
-        # Creating layout
-        form_layout = QVBoxLayout()
-        form_layout.addWidget(self.formGroupBox)
-        form_layout.addWidget(self.acceptButton)
-        form_layout.addWidget(self.cancelButton)
-        form_layout.addWidget(self.buttonBox)
-        self.setLayout(form_layout)
+        # Set up the view
+        self.view = QTableView()
+        self.view.setModel(self.model)
+        self.view.resizeColumnsToContents()
 
-    # create form method
-    def create_form(self):
-        # creating a form layout
-        layout = QFormLayout()
+        # Layout the GUI
+        self.centralWidget = QWidget()
+        self.setCentralWidget(self.centralWidget)
+        self.layout = QHBoxLayout()
+        self.centralWidget.setLayout(self.layout)
+        button_box = QVBoxLayout()
+        button_box.addWidget(self.saveButton)
+        button_box.addWidget(self.cancelButton)
+        button_box.addStretch()
+        layout = QVBoxLayout()
+        layout.addWidget(self.view)
+        layout.addStretch()
+        self.layout.addLayout(layout)
+        self.layout.addLayout(button_box)
 
-        # adding rows
-        layout.addRow(QLabel("UIN:"), self.uinEntry)
-        layout.addRow(QLabel("First Name:"), self.firstNameEntry)
-        layout.addRow(QLabel("Last Name:"), self.lastNameEntry)
-        layout.addRow(QLabel("Major:"), self.majorEntry)
-        layout.addRow(QLabel("Ambassador Status:"), self.ambassadorEntry)
-        layout.addRow(QLabel("Graduation Year:"), self.gradYearEntry)
+    def save_edit(self):
+        # Save changes and close edit window
+        self.model.submitAll()
+        self.main = MainWindow()
+        self.main.resize(1200, 600)
+        self.main.show()
+        self.close()
 
-        # setting layout
-        self.formGroupBox.setLayout(layout)
-
-    def edit_ambassador(self):
-        # Edit an ambassador grad year
-        # Create a query for later execution
-        update_data_query = QSqlQuery(self.db)
-        update_data_query.prepare(
-            """
-            UPDATE Ambassador
-            SET grad_year = ?
-            WHERE UIN = ?;
-            """
-        )
-
-        new_grad_year = self.gradYearEntry.text()
-        update_data_query.addBindValue(new_grad_year)
-
-        update_data_query.exec()
+    def cancel_edit(self):
+        # Exit edit window without saving changes
         self.main = MainWindow()
         self.main.resize(1200, 600)
         self.main.show()
@@ -139,7 +143,7 @@ class FormWindow(QDialog):
         self.acceptButton = QPushButton("Submit")
         self.acceptButton.pressed.connect(self.add_ambassador)
         self.cancelButton = QPushButton("Cancel")
-        self.cancelButton.pressed.connect(self.hide)
+        self.cancelButton.pressed.connect(self.cancel_add)
         self.buttonBox = QDialogButtonBox(self.acceptButton or self.cancelButton)
 
         # Creating layout
@@ -207,6 +211,12 @@ class FormWindow(QDialog):
         insert_data_query.addBindValue(grad_year)
 
         insert_data_query.exec()
+        self.main = MainWindow()
+        self.main.resize(1200, 600)
+        self.main.show()
+        self.close()
+
+    def cancel_add(self):
         self.main = MainWindow()
         self.main.resize(1200, 600)
         self.main.show()
