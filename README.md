@@ -7,6 +7,9 @@ The purpose of this repository is to store code for an engineering ambassador da
 - Identify students via their UIN (no need to track exact email)
 - Need to track graduation year, ambassador status, and total hours
 
+## Application Information
+- Application-side constraints for ambassador input
+
 # Schema Diagram
 ![image](database_schema.png)
 
