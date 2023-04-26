@@ -9,6 +9,13 @@ The purpose of this repository is to store code for an engineering ambassador da
 
 ## Application Information
 - Application-side constraints for ambassador input
+- In the future, functionality will be added to edit positons/hours/events/etc.
+
+# Challanges
+- Stricter security requirements (sentisitve student information)
+- GUI library (PyQt6) not exactly developer-friendly
+   - Likely will move to an Access Database over the summer
+- No existing template/resources to translate spreadsheet into new model
 
 # Schema Diagram
 ![image](database_schema.png)
@@ -82,12 +89,4 @@ The purpose of this repository is to store code for an engineering ambassador da
 - Given a specific event:
     - List of ambassadors and their respective positions at the event
     - List of ambassadors in a given position at the event
-
-# Challanges
-- Stricter security requirements (sentisitve student information)
-- GUI library (PyQt6) not exactly developer-friendly
-   - Likely will move to an Access Database over the summer
-- No existing template/resources to translate spreadsheet into new model
-
-
-
+  
