@@ -4,6 +4,8 @@ The purpose of this repository is to store code for an engineering ambassador da
 ## Requirements
 - Stricter requirements than usual because of controlled information
 - Working with a pre-existing information source (Ambassador Hours Spreadsheet)
+- Identify students via their UIN (no need to track exact email)
+- Need to track graduation year, ambassador status, and total hours
 
 # Schema Diagram
 ![image](database_schema.png)
@@ -79,8 +81,10 @@ The purpose of this repository is to store code for an engineering ambassador da
     - List of ambassadors in a given position at the event
 
 # Challanges
-- Stricter requirements
-- GUI not connecting to the database
+- Stricter security requirements (sentisitve student information)
+- GUI library (PyQt6) not exactly developer-friendly
+   - Likely will move to an Access Database over the summer
 - No existing template/resources to translate spreadsheet into new model
+
 
 
