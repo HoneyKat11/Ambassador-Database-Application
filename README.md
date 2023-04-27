@@ -87,5 +87,11 @@ The purpose of this repository is to store code for an engineering ambassador da
 # Challenges
 - Stricter security requirements (sensitive student information)
 - GUI library (PyQt6) not exactly developer-friendly
-   - Likely will move to an Access Database over the summer
+- No good documentation for PyQt6 (only PyQt5)
 - No existing template/resources to translate spreadsheet into new model
+
+# Future Work
+- Will likely transition this prototype to an Accesss Database
+   - For both security and functionality
+- For this GUI, could add more buttons for views and editing
+   - Possibly a search functionality
