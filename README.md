@@ -7,16 +7,6 @@ The purpose of this repository is to store code for an engineering ambassador da
 - Identify students via their UIN (no need to track exact email)
 - Need to track graduation year, ambassador status, and total hours
 
-# Application Information
-- Application-side constraints for ambassador input
-- In the future, functionality will be added to edit positons/hours/events/etc.
-
-# Challenges
-- Stricter security requirements (sensitive student information)
-- GUI library (PyQt6) not exactly developer-friendly
-   - Likely will move to an Access Database over the summer
-- No existing template/resources to translate spreadsheet into new model
-
 # Schema Diagram
 ![image](database_schema.png)
 
@@ -90,3 +80,12 @@ The purpose of this repository is to store code for an engineering ambassador da
     - List of ambassadors and their respective positions at the event
     - List of ambassadors in a given position at the event
   
+# Application Information
+- Application-side constraints for ambassador input
+- In the future, functionality will be added to edit positons/hours/events/etc.
+
+# Challenges
+- Stricter security requirements (sensitive student information)
+- GUI library (PyQt6) not exactly developer-friendly
+   - Likely will move to an Access Database over the summer
+- No existing template/resources to translate spreadsheet into new model
