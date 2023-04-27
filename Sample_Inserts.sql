@@ -1,8 +1,8 @@
 -- Insert new ambassador
-INSERT INTO Ambassador values(12345, 'John', 'Smith', 'Software', true, 2024);
-INSERT INTO Ambassador values(54321, 'Sarah', 'Williams', 'Civil', true, 2024);
-INSERT INTO Ambassador values(22123, 'Daniel', 'Hill', 'Environmental', false, 2026);
-INSERT INTO Ambassador values(66779, 'Max', 'Rock', 'Bioengineering', true, 2025);
+INSERT INTO Ambassador values(123450000, 'John', 'Smith', 'Software', true, 2024);
+INSERT INTO Ambassador values(543210000, 'Sarah', 'Williams', 'Civil', true, 2024);
+INSERT INTO Ambassador values(221230000, 'Daniel', 'Hill', 'Environmental', false, 2026);
+INSERT INTO Ambassador values(667790000, 'Max', 'Rock', 'Bioengineering', true, 2025);
 
 -- Insert new event
 INSERT INTO Event values(1, 'Say Yes to the Nest', 'March 18th, 2023', 'Spring 2023');
