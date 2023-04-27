@@ -76,18 +76,15 @@ class Window(QMainWindow):
 
     #def add(self):
 
-
-
-
     def delete(self):
         row = self.table.currentIndex().row()
-        column=self.table.currentIndex().column()
-        index = self.tableView.model.index(row,column)
+        column = 1
+        index = self.tableView.model.index(row, column)
         FindDialog = QInputDialog()
         FindDialog.setLabelText("Enter ambassador UIN or Name")
         FindDialog.setInputMode.InputMode(QInputDialog.InputMode.TextInput)
         FindDialog.exec()
-        UIN = index.data()
+        option = self.tableView.model.index.data()
         deleteDataAmbassadorByUINQuery = QSqlQuery(self.db)
         deleteDataAmbassadorByNameQuery = QSqlQuery(self.db)
 
@@ -107,25 +104,11 @@ class Window(QMainWindow):
             """)
 
         #Psedocode for deleting which one
-        if row < 0:
-            return
 
-        if FindDialog.textValue() == UIN:
-            deleteDataAmbassadorByUINQuery.bindValue(self,UIN)
-            self.table.delete(deleteDataAmbassadorByUINQuery)
-
-        #if FindDialog.textValue() == column:
-        #    deleteDataAmbassadorByNameQuery.bindValue(self,first_name)
-        #    deleteDataAmbassadorByNameQuery.bindValue(self,last_name)
-
-
-
-
-
-
-
-
-
+        if FindDialog.textValue() == option: #maybe rewrite it as options and set it equal to UIN
+            UIN = option
+            deleteDataAmbassadorByUINQuery.bindValue(self, UIN)
+            self.table.delete(row)
 
     def get_db(self):
         self.db = QSqlDatabase('QSQLITE')
