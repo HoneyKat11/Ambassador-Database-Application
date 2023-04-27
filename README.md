@@ -12,7 +12,7 @@ The purpose of this repository is to store code for an engineering ambassador da
 - In the future, functionality will be added to edit positons/hours/events/etc.
 
 # Challenges
-- Stricter security requirements (sentisitve student information)
+- Stricter security requirements (sensitive student information)
 - GUI library (PyQt6) not exactly developer-friendly
    - Likely will move to an Access Database over the summer
 - No existing template/resources to translate spreadsheet into new model
