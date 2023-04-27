@@ -11,7 +11,7 @@ The purpose of this repository is to store code for an engineering ambassador da
 - Application-side constraints for ambassador input
 - In the future, functionality will be added to edit positons/hours/events/etc.
 
-# Challanges
+# Challenges
 - Stricter security requirements (sentisitve student information)
 - GUI library (PyQt6) not exactly developer-friendly
    - Likely will move to an Access Database over the summer
