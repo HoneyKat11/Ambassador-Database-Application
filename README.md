@@ -1,13 +1,13 @@
 # Ambassador-Database-Application
 The purpose of this repository is to store code for an engineering ambassador database application created as a project for Intro to Data Engineering (COP 3710) during the Spring 2023 semester.
 
-## Requirements
+# Requirements
 - Stricter requirements than usual because of controlled information
 - Working with a pre-existing information source (Ambassador Hours Spreadsheet)
 - Identify students via their UIN (no need to track exact email)
 - Need to track graduation year, ambassador status, and total hours
 
-## Application Information
+# Application Information
 - Application-side constraints for ambassador input
 - In the future, functionality will be added to edit positons/hours/events/etc.
 
